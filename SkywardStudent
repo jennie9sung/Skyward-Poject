@@ -1,9 +1,0 @@
-public class Student{
-  //make variables
-  //make constructor
-  // in the constructor, make a 3x4 array, witht the three collumns being classes, attendace, and grades, and thw 4 rows being empty data for classes
-  
-  //make 3 methods, all of which change the array of the student
-  //change grade - choose what class to change and use that to naviagte the array.
-  //change attendance - same thing as change array
-  //add class - unnullify a row of the student's array by assigning a value and assign it to a class ID
