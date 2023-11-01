@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList
+import java.util.ArrayList;
 public class SkywardMain {
 
 	public static void main(String[] args) {
@@ -13,9 +13,11 @@ public class SkywardMain {
 		int choice;
 		do {
 		
-	    System.out.println("====================Skyward====================="");    
-		System.out.println("\t" + Students.get(0));
+	    System.out.println("====================Skyward=====================");    
+		for(int i=1; i<studenttotal; i++){
+		    System.out.println("\t" + Students.get(i));
 		    
+		}    
 		    
 		// pring out options
 		System.out.println("1. Add a student");
@@ -35,7 +37,8 @@ public class SkywardMain {
 		    	System.out.println("Enter the student's name");
 		    	String name = reader.nextLine();
 		    	Students.add(name);
-		    	SkywardStudent studenttotal  = new SkywardStudent();
+//		    	SkywardStudent studenttotal  = new SkywardStudent();
+		    	studenttotal++;
 		    	break;
 		    case 2:
 			   System.out.println("Type the class ID: ");
@@ -53,6 +56,7 @@ public class SkywardMain {
 		        System.exit(0);
 		        break;
 	    }
+	    System.out.flush(); 
 	    }
 	    while (choice != 5);
 	}
