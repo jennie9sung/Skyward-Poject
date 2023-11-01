@@ -1,12 +1,32 @@
-public class Student{
+public class SkywardStudent{
     private int grade; 
     private int attendance;
     private int classes;
-    
-    public Student(){
+
+    // constructor?
+    public SkywardStudent(){
         classes = 0;
         int[][] student = new int[3][2];
     }
+
+    // print options + get user input
+    public void options() {
+		// call class
+		Scanner reader = new Scanner(System.in);
+		
+		// pring out options
+		System.out.println("1. Add class");
+		System.out.println("2. Add student");
+		System.out.println("3. Assign class");
+		System.out.println("4. Assign grade");
+		System.out.println("5. Edit Attendance");
+		System.out.println("");
+		System.out.print("Choose an option: ");
+		// user input
+		int choice = reader.nextInt();
+
+        // switch statement here?
+	}
     
     public void enrollStudent(int classID) {
         Student [classes][0] = classID;
