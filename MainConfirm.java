@@ -14,8 +14,8 @@ public class SkywardMain {
 		do {
 		
 	    System.out.println("====================Skyward=====================");    
-		for(int i=1; i<studenttotal; i++){
-		    System.out.println("\t" + Students.get(i));
+		for(int i=0; i<studenttotal; i++){
+		    System.out.println("\t" + (i+1) + ". " + Students.get(i));
 		    
 		}    
 		    
@@ -29,13 +29,13 @@ public class SkywardMain {
 		System.out.println("7. Exit");
 		System.out.print("Choose an option: ");
 		// user input
-		int choice = reader.nextInt();
+	    choice = reader.nextInt();
 
         // switch statement here?
 	    switch(choice){
 		    case 1:
 		    	System.out.println("Enter the student's name");
-		    	String name = reader.nextLine();
+		    	String name = reader.next();
 		    	Students.add(name);
 //		    	SkywardStudent studenttotal  = new SkywardStudent();
 		    	studenttotal++;
@@ -56,7 +56,7 @@ public class SkywardMain {
 		        System.exit(0);
 		        break;
 	    }
-	    System.out.flush(); 
+	    System. out. print("\033[H\033[2J");
 	    }
 	    while (choice != 5);
 	}
