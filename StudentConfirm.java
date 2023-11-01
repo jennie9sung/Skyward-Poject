@@ -23,7 +23,7 @@ public class SkywardStudent{
     
     private int[] courses = new int[5];
 
-    // constructor?
+    // constructor that also initializes the array for the student
     public SkywardStudent(){ //All of the methods are public by default, but as of now they are not static. Is that a purposeful choice?
         classes = 0;
         int[][] student = new int[3][2];
@@ -37,7 +37,7 @@ public class SkywardStudent{
     
     public void changeGrade (int grade, int classID){
         int var1=0;
-        for(int var2=0; var2<classes;var2++){ //What does this do? --Will 
+        for(int var2=0; var2<classes;var2++){ //What does this do? --Will  //for loop to match inputted class ID with a row in the student's array -Neev 
             if(student[var2][0]==classID){
                 var1=var2;
             }
@@ -46,7 +46,7 @@ public class SkywardStudent{
     }
     
     public void changeAttendance (int attendance, int classID){
-        int var1=0; //Why not declare var1 in the class as opposed to declaring it in a method?
+        int var1=0; //Why not declare var1 in the class as opposed to declaring it in a method? //I mean we could but it might get mixed up with the other var1 in the other method. I mean this should work but if you want to make it better go for it -Neev
         for(int var2=0; var2<classes;var2++){
             if(student[var2][0]==classID){
                 var1=var2;
