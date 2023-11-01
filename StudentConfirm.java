@@ -14,8 +14,6 @@ import java.util.Scanner;
 
 
 public class SkywardStudent{
-    private int grade; 
-    private int attendance;
     private int classes;
     public int[][] student;
     
