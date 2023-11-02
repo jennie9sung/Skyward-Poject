@@ -18,7 +18,7 @@ public class SkywardMain {
 		    System.out.println("\t" + (i+1) + ". " + Students.get(i));
 		    
 		}    
-		    
+		System.out.println("\n------------------------------------------------");    
 		// pring out options
 		System.out.println("1. Add a student");
 		System.out.println("2. Enroll a student");
