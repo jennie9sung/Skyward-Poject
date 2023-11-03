@@ -8,7 +8,7 @@ public class SkywardMain {
 		Scanner reader = new Scanner(System.in);
 		
 		int studenttotal=0;
-		int classnum =0;
+		int classtotal =0;
 		ArrayList<String> Students = new ArrayList<String>();
 		ArrayList<String> Classes = new ArrayList<String>();
 		int choice;
@@ -17,17 +17,17 @@ public class SkywardMain {
 		System.out.println("");
 	    System.out.println("====================Skyward=====================");    
 		for(int i=0; i<studenttotal; i++){
-			// this one's to check variable values --> remove this part later
-//			System.out.println(studenttotal+"  "+classnum);
-			
-		    System.out.print("\t" + (i+1) + ". " + Students.get(i));
-		    if (classnum>0&&i<classnum) {
-		    	System.out.println("    " + Classes.get(i));
-		    }
-		    System.out.println("");
-		    
+		    System.out.println("\t" + (i+1) + ". " + Students.get(i));
 		}    
-		System.out.println("\n------------------------------------------------");    
+		
+		System.out.println("\n------------------------------------------------");
+		for(int i=0; i<classtotal; i++){
+		    System.out.println("\t" + (i+1) + ". " + Classes.get(i));
+		}    
+		
+		
+		
+		System.out.println("================================================");    
 		// print out options
 		System.out.println("1. Add a student");
 		System.out.println("2. Enroll a student");
@@ -56,21 +56,17 @@ public class SkywardMain {
 		       school.enrollStudent(studentID,classID);
 			   break; 
 		    case 3:
-		    	// assign class to a certain student (id given when add new student)
-		    	// worked when I tested
-		    	System.out.println("Enter the class name: ");
-				   String classname = reader.next();
-				   System.out.println("Enter the Student ID: ");
-				   int id = reader.nextInt();
-				   Classes.set(id-1, classname);
-				   classnum++;
 		        break;
 		    case 4:
 		        break;
 		    case 5:
 		        break;
 		    case 6:
-		        break;
+		        System.out.println("Enter the class's name: ");
+		    	String classname = reader.next();
+		    	Classes.add(classname);
+		    	classtotal++;
+		    	break;
 		    case 7:
 		        System.exit(0);
 		        break;
