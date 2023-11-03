@@ -43,5 +43,20 @@ public class SkywardStudent{
         school[studentID][var1][1]=attendance;
         }
     }
+    
+    public static int getClasstotal (int studentID){
+        int classtotal=0;
+        for (int i=0; i<4; i++){
+            if(school[studentID][i][0] != 0){
+                classtotal++;
+            } 
+        }
+        return classtotal;
+    }
+    
+    
+    
+    
+    
 }
     
