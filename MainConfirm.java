@@ -18,6 +18,9 @@ public class SkywardMain {
 	    System.out.println("====================Skyward=====================");    
 		for(int i=0; i<studenttotal; i++){
 		    System.out.println("\t" + (i+1) + ". " + Students.get(i));
+		    int c = school.getClasstotal(i);
+		    for(int k = 0; k<c; k++) 
+		        System.out.println("\t\t" + Classes.get(k));
 		}    
 		
 		System.out.println("\n------------------------------------------------");
@@ -31,7 +34,7 @@ public class SkywardMain {
 		// print out options
 		System.out.println("1. Add a student");
 		System.out.println("2. Enroll a student");
-		System.out.println("3. Assign course to a student"); // is assign course adding new courses?(Jennifer)
+		System.out.println("3. Assign course to a student");
 		System.out.println("4. Assign grade to a student's class");
 		System.out.println("5. Edit a student's Attendance");
 		System.out.println("6. Create a Class");
@@ -71,7 +74,7 @@ public class SkywardMain {
 		        System.exit(0);
 		        break;
 	    }
-	    System. out. print("\033[H\033[2J"); // what is this doing? I thought it was clearing smt (Jennifer)
+	    System. out. print("\033[H\033[2J"); 
 	    }
 	    while (choice != 5);
 	}
