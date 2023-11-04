@@ -1,81 +1,102 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class SkywardStudent {
-    private int classes; // Variable to track the number of classes a student is enrolled in
-    private int students; // Variable to track the number of students (currently not used)
-    private int[][][] school; // 3D array to store student information: [studentID][classIndex][0:classID, 1:grade, 2:attendance]
+public class SkywardMain {
 
-    // Constructor to initialize the class properties and the school array
-    public SkywardStudent() {
-        classes = 0;
-        students = 0;
-        // Initializing the school array with dimensions [10][3][2] for 10 students, 3 classes per student, and 2 data points (classID, grade, attendance)
-        school = new int[10][3][2];
-    }
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
 
-    // Method to enroll a student in a class
-    public void enrollStudent(int studentID, int classID) {
-        if (classes < 3) { // Checking if the student can enroll in more classes (maximum 3 classes allowed)
-            school[studentID][classes][0] = classID; // Storing the classID in the school array
-            classes++; // Incrementing the classes count for the current student
-        } else {
-            System.out.println("Student can only enroll in 3 classes."); // Printing a message if the maximum class limit is reached
-        }
-    }
+        int studenttotal = 0;
+        int classtotal = 0;
+        ArrayList<String> Students = new ArrayList<>();
+        ArrayList<String> Classes = new ArrayList<>();
+        int choice;
+        SkywardStudent school = new SkywardStudent();
 
-    // Method to change the grade for a specific class of a student
-    public void changeGrade(int studentID, int grade, int classID) {
-        for (int i = 0; i < classes; i++) {
-            if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
-                school[studentID][i][1] = grade; // Updating the grade for that class
-                return;
+        do {
+            System.out.println("====================Skyward=====================");
+            for (int i = 0; i < studenttotal; i++) {
+                System.out.println("\t" + (i + 1) + ". " + Students.get(i));
+                int c = school.getClasstotal(i);
+                for (int k = 0; k < c; k++) {
+                    System.out.print("\t\t" + Classes.get(k));
+                    // Print out grade then attendance for class k
+                    System.out.print("(Grade: " + school.getGrade(i, k) + ", Attendance: " + school.getAttendance(i, k) + ")");
+                }
+                System.out.println("");
             }
-        }
-        System.out.println("Class ID not found for the student."); // Printing a message if the classID is not found
+
+            System.out.println("\n------------------------------------------------");
+            for (int i = 0; i < classtotal; i++) {
+                System.out.println("\t" + (i + 1) + ". " + Classes.get(i));
+            }
+
+            System.out.println("================================================");
+            // print out options
+            System.out.println("1. Add a student");
+            System.out.println("2. Enroll a student in a class");
+            System.out.println("3. Assign grade to a student's class");
+            System.out.println("4. Edit a student's Attendance");
+            System.out.println("5. Create a Class");
+            System.out.println("6. Exit");
+            System.out.print("Choose an option: ");
+
+            // user input
+            choice = reader.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter the student's name: ");
+                    String name = reader.next();
+                    Students.add(name);
+                    studenttotal++;
+                    break;
+                case 2:
+                    System.out.print("Enter the student's ID:");
+                    int studentID = reader.nextInt() - 1;
+                    System.out.print("Enter the class's ID: ");
+                    int classID = reader.nextInt();
+                    school.enrollStudent(studentID, classID);
+                    break;
+                case 3:
+                    System.out.print("Enter the student's ID:");
+                    studentID = reader.nextInt() - 1;
+                    System.out.print("Enter the class's ID: ");
+                    classID = reader.nextInt();
+                    System.out.print("Enter the percent grade you would like to change to: ");
+                    int grade = reader.nextInt();
+                    school.changeGrade(studentID, grade, classID);
+                    break;
+                case 4:
+                    System.out.print("Enter the student's ID:");
+                    studentID = reader.nextInt() - 1;
+                    System.out.print("Enter the class's ID: ");
+                    classID = reader.nextInt();
+                    System.out.print("Enter the number of tardies the student has in this class:");
+                    int attendance = reader.nextInt();
+                    school.changeAttendance(studentID, attendance, classID);
+                    break;
+                case 5:
+                    System.out.println("Enter the class's name: ");
+                    String classname = reader.next();
+                    Classes.add(classname);
+                    classtotal++;
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+
+            clearConsole(); // Clear the console for a cleaner interface
+        } while (choice != 6);
     }
 
-    // Method to change the attendance for a specific class of a student
-    public void changeAttendance(int studentID, int attendance, int classID) {
-        for (int i = 0; i < classes; i++) {
-            if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
-                school[studentID][i][2] = attendance; // Updating the attendance for that class
-                return;
-            }
-        }
-        System.out.println("Class ID not found for the student."); // Printing a message if the classID is not found
+    // Method to clear the console
+    public static void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
-
-    // Method to get the total number of classes a student is enrolled in
-    public int getClasstotal(int studentID) {
-        int classtotal = 0; // Variable to store the total number of classes
-        for (int i = 0; i < 3; i++) { // Looping through the classes (maximum 3)
-            if (school[studentID][i][0] != 0) { // Checking if the classID is not zero (indicating a valid class)
-                classtotal++; // Incrementing the total classes count
-            }
-        }
-        return classtotal; // Returning the total number of classes the student is enrolled in
-    }
-    
-    public int getAttendance(int studentID, int classID) {
-        for (int i = 0; i < classes; i++) {
-            if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
-                return school[studentID][i][2]; // Returning the attendance for that class
-            }
-        }
-        System.out.println("Class ID not found for the student."); // Printing a message if the classID is not found
-        return -1; // Returning -1 to indicate that the classID was not found
-    }
-    
-    // Method to get the grade for a specific class of a student
-    public int getGrade(int studentID, int classID) {
-        for (int i = 0; i < classes; i++) {
-            if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
-                return school[studentID][i][1]; // Returning the grade for that class
-            }
-        }
-        System.out.println("Class ID not found for the student."); // Printing a message if the classID is not found
-        return -1; // Returning -1 to indicate that the classID was not found
-    }
-    
-    
 }
