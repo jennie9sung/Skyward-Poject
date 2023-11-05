@@ -15,17 +15,19 @@ public class SkywardStudent {
 
     // Method to enroll a student in a class
     public void enrollStudent(int studentID, int classID) {
-        if (classes < 3) { // Checking if the student can enroll in more classes (maximum 3 classes allowed)
-            school[studentID][classes][0] = classID; // Storing the classID in the school array
+        if (getClasstotal(studentID) < 4) { // Checking if the student can enroll in more classes (maximum 3 classes allowed)
+            school[studentID][getClasstotal(studentID)][0] = classID; // Storing the classID in the school array
             classes++; // Incrementing the classes count for the current student
         } else {
             System.out.println("Student can only enroll in 3 classes."); // Printing a message if the maximum class limit is reached
         }
+        // Reset the classes count for the next student
+        classes = 0;
     }
 
     // Method to change the grade for a specific class of a student
     public void changeGrade(int studentID, int grade, int classID) {
-        for (int i = 0; i < classes; i++) {
+        for (int i = 0; i < getClasstotal(studentID); i++) {
             if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
                 school[studentID][i][1] = grade; // Updating the grade for that class
                 return;
@@ -36,7 +38,7 @@ public class SkywardStudent {
 
     // Method to change the attendance for a specific class of a student
     public void changeAttendance(int studentID, int attendance, int classID) {
-        for (int i = 0; i < classes; i++) {
+        for (int i = 0; i < getClasstotal(studentID); i++) {
             if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
                 school[studentID][i][2] = attendance; // Updating the attendance for that class
                 return;
@@ -57,7 +59,7 @@ public class SkywardStudent {
     }
     
     public int getAttendance(int studentID, int classID) {
-        for (int i = 0; i < classes; i++) {
+        for (int i = 0; i < getClasstotal(studentID); i++) {
             if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
                 return school[studentID][i][2]; // Returning the attendance for that class
             }
@@ -68,7 +70,7 @@ public class SkywardStudent {
     
     // Method to get the grade for a specific class of a student
     public int getGrade(int studentID, int classID) {
-        for (int i = 0; i < classes; i++) {
+        for (int i = 0; i < getClasstotal(studentID); i++) {
             if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
                 return school[studentID][i][1]; // Returning the grade for that class
             }
