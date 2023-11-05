@@ -99,4 +99,12 @@ public class SkywardMain {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
+
+    //having some erros so im gonna outline how to fix tthem here -Neev
+    //take out the collumn for storing classIDs for every studentID 
+        //that involves moving everthing for attendace and grades back outline
+    //make a new arraylist called StudentClassTotal in main 
+    //ever time the user gives birth, they add a new pannel to the arraylist, who's number on the list matches the ID, and value is 0
+    //Whenever they enroll a student in a course, the pannel for that specific student is ticked up
 }
