@@ -81,6 +81,7 @@ public class SkywardMain {
                 		System.out.print("Enter the class's ID: ");
                 		classID = reader.nextInt() - 1;
                 		school.enrollStudent(studentID, classID);
+                        //SkywardStudent.schedule[studentID]++;
                 	}
                     break;
                 case 3:
