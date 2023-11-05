@@ -21,7 +21,7 @@ public class SkywardMain {
             for (int i = 0; i < studenttotal; i++) {
                 System.out.println("\t" + (i + 1) + ". " + Students.get(i));
                 int numClasses = school.getClasstotal(i);
-                for (int k = 0; k <= numClasses; k++) {
+                for (int k = 0; k < numClasses; k++) {
                 classID = school.getClassID(i, k);
                 int grade = school.getGrade(i, classID);
                 int attendance = school.getAttendance(i, classID);
