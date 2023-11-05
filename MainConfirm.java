@@ -8,6 +8,9 @@ public class SkywardMain {
 
         int studenttotal = 0;
         int classtotal = 0;
+        int studentID;
+        int classID;
+        int error=0;
         ArrayList<String> Students = new ArrayList<>();
         ArrayList<String> Classes = new ArrayList<>();
         int choice;
@@ -17,14 +20,16 @@ public class SkywardMain {
             System.out.println("====================Skyward=====================");
             for (int i = 0; i < studenttotal; i++) {
                 System.out.println("\t" + (i + 1) + ". " + Students.get(i));
-                int c = school.getClasstotal(i);
-                for (int k = 0; k < c; k++) {
-                    System.out.print("\t\t" + Classes.get(k));
-                    // Print out grade then attendance for class k
-                    System.out.print("(Grade: " + school.getGrade(i, k) + ", Attendance: " + school.getAttendance(i, k) + ")");
+                int numClasses = school.getClasstotal(i);
+                for (int k = 0; k < numClasses; k++) {
+                    classID = school.getClassID(i, k);
+                    int grade = school.getGrade(i, classID);
+                    int attendance = school.getAttendance(i, classID);
+                    System.out.println("\t\t" + Classes.get(classID) + " (Grade: " + grade + ", Attendance: " + attendance + ")");
                 }
-                System.out.println("");
+                System.out.println(""); // Print a newline after each student's classes
             }
+            
 
             System.out.println("\n------------------------------------------------");
             for (int i = 0; i < classtotal; i++) {
@@ -32,7 +37,21 @@ public class SkywardMain {
             }
 
             System.out.println("================================================");
+            
+            switch (error){
+                case 1:
+                    System.out.println("No student exists.");
+                    error=0;
+                    break;
+                case 2:
+                    System.out.println("No class exists.");
+                    error=0;
+                    break;
+            }
+
             // print out options
+            System.out.println("");
+
             System.out.println("1. Add a student");
             System.out.println("2. Enroll a student in a class");
             System.out.println("3. Assign grade to a student's class");
@@ -46,35 +65,54 @@ public class SkywardMain {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter the student's name: ");
+                    System.out.print("Enter the student's name: ");
                     String name = reader.next();
                     Students.add(name);
                     studenttotal++;
+                    school.giveBirth();
                     break;
                 case 2:
-                    System.out.print("Enter the student's ID:");
-                    int studentID = reader.nextInt() - 1;
-                    System.out.print("Enter the class's ID: ");
-                    int classID = reader.nextInt();
-                    school.enrollStudent(studentID, classID);
+                	if (studenttotal==0) {
+                		error =1;
+                    } else if (classtotal==0){
+                        error = 2;
+                	}else {
+                		System.out.print("Enter the student's ID:");
+                		studentID = reader.nextInt() - 1;
+                		System.out.print("Enter the class's ID: ");
+                		classID = reader.nextInt() - 1;
+                		school.enrollStudent(studentID, classID);
+                	}
                     break;
                 case 3:
-                    System.out.print("Enter the student's ID:");
-                    studentID = reader.nextInt() - 1;
-                    System.out.print("Enter the class's ID: ");
-                    classID = reader.nextInt();
-                    System.out.print("Enter the percent grade you would like to change to: ");
-                    int grade = reader.nextInt();
-                    school.changeGrade(studentID, grade, classID);
+                	if (studenttotal==0) {
+                		error =1;
+                    } else if (classtotal==0){
+                        error = 2;
+                	}else {
+                		System.out.print("Enter the student's ID:");
+                        studentID = reader.nextInt() - 1;
+                        System.out.print("Enter the class's ID: ");
+                        classID = reader.nextInt() - 1;
+                        System.out.print("Enter the percent grade you would like to change to: ");
+                        int grade = reader.nextInt();
+                        school.changeGrade(studentID, grade, classID);
+                	}
                     break;
                 case 4:
-                    System.out.print("Enter the student's ID:");
-                    studentID = reader.nextInt() - 1;
-                    System.out.print("Enter the class's ID: ");
-                    classID = reader.nextInt();
-                    System.out.print("Enter the number of tardies the student has in this class:");
-                    int attendance = reader.nextInt();
-                    school.changeAttendance(studentID, attendance, classID);
+                	if (studenttotal==0) {
+                		error =1;
+                    } else if (classtotal==0){
+                        error = 2;
+                	}else {
+                		System.out.print("Enter the student's ID:");
+                        studentID = reader.nextInt() - 1;
+                        System.out.print("Enter the class's ID: ");
+                        classID = reader.nextInt() - 1;
+                        System.out.print("Enter the number of tardies the student has in this class:");
+                        int attendance = reader.nextInt();
+                        school.changeAttendance(studentID, attendance, classID);
+                	}
                     break;
                 case 5:
                     System.out.println("Enter the class's name: ");
@@ -100,11 +138,7 @@ public class SkywardMain {
         System.out.flush();
     }
 
-
-    //having some erros so im gonna outline how to fix tthem here -Neev
-    //take out the collumn for storing classIDs for every studentID 
-        //that involves moving everthing for attendace and grades back outline
-    //make a new arraylist called StudentClassTotal in main 
-    //ever time the user gives birth, they add a new pannel to the arraylist, who's number on the list matches the ID, and value is 0
-    //Whenever they enroll a student in a course, the pannel for that specific student is ticked up
+    
+    
 }
+
