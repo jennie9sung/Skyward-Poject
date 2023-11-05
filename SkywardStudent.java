@@ -4,6 +4,7 @@ public class SkywardStudent {
     private int classes; // Variable to track the number of classes a student is enrolled in
     private int students; // Variable to track the number of students (currently not used)
     private int[][][] school; // 3D array to store student information: [studentID][classIndex][0:classID, 1:grade, 2:attendance]
+    public int schedule[];
 
     // Constructor to initialize the class properties and the school array
     public SkywardStudent() {
@@ -15,7 +16,7 @@ public class SkywardStudent {
 
     // Method to enroll a student in a class
     public void enrollStudent(int studentID, int classID) {
-        if (getClasstotal(studentID) < 4) { // Checking if the student can enroll in more classes (maximum 3 classes allowed)
+        if (getClasstotal(studentID) < 4) { // Checking if the student can enroll in more classes (maximum 3 classes allowed) //If schedule[studentID] < 4
             school[studentID][getClasstotal(studentID)][0] = classID; // Storing the classID in the school array
         } else {
             System.out.println("Student can only enroll in 3 classes."); // Printing a message if the maximum class limit is reached
