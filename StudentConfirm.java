@@ -5,7 +5,7 @@ public class SkywardStudent {
     private int classes; // Variable to track the number of classes a student is enrolled in
     private int students; // Variable to track the number of students (currently not used)
     private int[][][] school; // 3D array to store student information: [studentID][classIndex][0:classID, 1:grade, 2:attendance]
-    ArrayList<Int> StudentClassTotal = new ArrayList<>();
+    ArrayList<Integer> StudentClassTotal = new ArrayList<>();
 
 
     // Constructor to initialize the class properties and the school array
