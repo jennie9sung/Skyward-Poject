@@ -20,14 +20,16 @@ public class SkywardMain {
             System.out.println("====================Skyward=====================");
             for (int i = 0; i < studenttotal; i++) {
                 System.out.println("\t" + (i + 1) + ". " + Students.get(i));
-                int c = school.getClasstotal(i);
-                for (int k = 0; k < c; k++) {
-                    System.out.print("\t\t" + Classes.get(k));
-                    // Print out grade then attendance for class k
-                    System.out.print("(Grade: " + school.getGrade(i, k) + ", Attendance: " + school.getAttendance(i, k) + ")");
+                int numClasses = school.getClasstotal(i);
+                for (int k = 0; k <= numClasses; k++) {
+                classID = school.getClassID(i, k);
+                int grade = school.getGrade(i, classID);
+                int attendance = school.getAttendance(i, classID);
+                System.out.println("\t\t" + Classes.get(classID) + " (Grade: " + grade + ", Attendance: " + attendance + ")");
                 }
-                System.out.println("");
+                System.out.println(""); // Print a newline after each student's classes
             }
+            
 
             System.out.println("\n------------------------------------------------");
             for (int i = 0; i < classtotal; i++) {
@@ -63,7 +65,7 @@ public class SkywardMain {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter the student's name: ");
+                    System.out.print("Enter the student's name: ");
                     String name = reader.next();
                     Students.add(name);
                     studenttotal++;
@@ -77,7 +79,7 @@ public class SkywardMain {
                 		System.out.print("Enter the student's ID:");
                 		studentID = reader.nextInt() - 1;
                 		System.out.print("Enter the class's ID: ");
-                		classID = reader.nextInt();
+                		classID = reader.nextInt() - 1;
                 		school.enrollStudent(studentID, classID);
                 	}
                     break;
@@ -90,7 +92,7 @@ public class SkywardMain {
                 		System.out.print("Enter the student's ID:");
                         studentID = reader.nextInt() - 1;
                         System.out.print("Enter the class's ID: ");
-                        classID = reader.nextInt();
+                        classID = reader.nextInt() - 1;
                         System.out.print("Enter the percent grade you would like to change to: ");
                         int grade = reader.nextInt();
                         school.changeGrade(studentID, grade, classID);
@@ -105,7 +107,7 @@ public class SkywardMain {
                 		System.out.print("Enter the student's ID:");
                         studentID = reader.nextInt() - 1;
                         System.out.print("Enter the class's ID: ");
-                        classID = reader.nextInt();
+                        classID = reader.nextInt() - 1;
                         System.out.print("Enter the number of tardies the student has in this class:");
                         int attendance = reader.nextInt();
                         school.changeAttendance(studentID, attendance, classID);
@@ -135,3 +137,4 @@ public class SkywardMain {
         System.out.flush();
     }
 }
+
