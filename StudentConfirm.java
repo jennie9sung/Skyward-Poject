@@ -67,12 +67,7 @@ public class SkywardStudent {
 //    }
     
     public int getAttendance(int studentID, int classID) {
-        for (int i = 0; i < StudentClassTotal.get(studentID); i++) {
-            if (school[studentID][i][0] == classID) { // Finding the class with the given classID for the student
-                return school[studentID][i][2]; // Returning the attendance for that class
-            }
-        }
-        return 0;
+        return school[studentID][classID][1]; // Returning the attendance for that class
     }
     
     // Method to get the grade for a specific class of a student
