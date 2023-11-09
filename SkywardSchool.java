@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SkywardSchool {
-    private int[][][] school; // 3D array to store student information: [studentID][classIndex][0:classID, 1:grade, 2:attendance]
+    private int[][][] school; // 3D array to store student information: [studentID][classID][0: class name, 1: grade, 2: attendance]
     ArrayList<Integer> StudentClassTotal = new ArrayList<>();
 
     // Constructor to initialize the class properties and the school array
