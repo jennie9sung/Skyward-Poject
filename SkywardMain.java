@@ -87,43 +87,45 @@ public class SkywardMain {
                     break;
                 case 2:
                     // Enroll a student in a class
-                     System.out.print("Enter the student's ID: ");
+                    if (studenttotal == 0) {
+                        error = 1;
+                    } else if (classtotal == 0) {
+                        error = 2;
+                    } else {
+                        System.out.print("Enter the student's ID: ");
                         studentID = reader.nextInt() - 1;
                         System.out.print("Enter the class's ID: ");
                         classID = reader.nextInt() - 1;
-                    if (studentID > studenttotal) { //This makes sure there is a student in the space. This block will appear multiple times
-                        error = 1;
-                    } else if (classID > classtotal) {
-                        error = 2;
-                    } else {
                         school.enrollStudent(studentID, classID);
                     }
                     break;
                 case 3:
                     // Assign grade to a student's class
-                    System.out.print("Enter the student's ID: ");
+                    if (studenttotal == 0) {
+                        error = 1;
+                    } else if (classtotal == 0) {
+                        error = 2;
+                    } else {
+                        System.out.print("Enter the student's ID: ");
                         studentID = reader.nextInt() - 1;
                         System.out.print("Enter the class's ID: ");
                         classID = reader.nextInt() - 1;
-                    if (studentID > studenttotal) {
-                        error = 1;
-                    } else if (classID > classtotal) {
-                        error = 2;
-                    } else {
+                        System.out.print("Enter the percent grade you would like to change to: ");
+                        int grade = reader.nextInt();
                         school.changeGrade(studentID, grade, classID);
                     }
                     break;
                 case 4:
                     // Edit a student's Attendance
-                   System.out.print("Enter the student's ID: ");
+                    if (studenttotal == 0) {
+                        error = 1;
+                    } else if (classtotal == 0) {
+                        error = 2;
+                    } else {
+                        System.out.print("Enter the student's ID: ");
                         studentID = reader.nextInt() - 1;
                         System.out.print("Enter the class's ID: ");
                         classID = reader.nextInt() - 1;
-                    if (studentID > studenttotal) {
-                        error = 1;
-                    } else if (classID > classtotal) {
-                        error = 2;
-                    } else {
                         System.out.print("Enter the number of tardies the student has in this class:");
                         int attendance = reader.nextInt();
                         school.changeAttendance(studentID, attendance, classID);
