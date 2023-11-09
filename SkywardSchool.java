@@ -7,7 +7,8 @@ public class SkywardSchool {
 
     // Constructor to initialize the class properties and the school array
     public SkywardSchool() {
-        // Initializing the school array with dimensions [10][10][3] for 10 students, 10 classes per student, and 3 data points (classID, grade, attendance)
+        // Initializing the school array with dimensions [10][10][3] for 10 possible students(IDs), 10 possible classes (IDs), and 3 
+        // data points (class name , grade, attendance)
         school = new int[10][10][3];
     }
 
