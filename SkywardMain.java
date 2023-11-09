@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
+// This project was completed on November 8 2023 by Neev Zeroni, Jennifer Sung, Daniel Argento, and William Barrett
 public class SkywardMain {
 
     public static void main(String[] args) {
