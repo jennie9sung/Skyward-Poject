@@ -53,6 +53,9 @@ public class SkywardMain {
                     System.out.println("No class exists.");
                     error = 0;
                     break;
+                case 3:
+                    System.out.println("You have reached the ten student capacity!");
+                    error = 0;
             }
 
             // Display user options
@@ -71,12 +74,16 @@ public class SkywardMain {
             // Handle user choices
             switch (choice) {
                 case 1:
-                    // Add a new student
-                    System.out.print("Enter the student's name: ");
-                    String name = reader.next();
-                    Students.add(name);
-                    studenttotal++;
-                    school.giveBirth();
+                   // Add a new student
+                    if (studenttotal<10){
+                        System.out.print("Enter the student's name: ");
+                        String name = reader.next();
+                        Students.add(name);
+                        studenttotal++;
+                        school.giveBirth();
+                    }else{
+                        error = 3;
+                    }
                     break;
                 case 2:
                     // Enroll a student in a class
