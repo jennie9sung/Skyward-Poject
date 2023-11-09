@@ -15,7 +15,7 @@ public class SkywardMain {
         ArrayList<String> Students = new ArrayList<>(); // ArrayList to store student names
         ArrayList<String> Classes = new ArrayList<>(); // ArrayList to store class names
         int choice;
-        SkywardStudent school = new SkywardStudent(); // Instance of SkywardStudent class for student management
+        SkywardSchool school = new SkywardSchool(); // Instance of SkywardStudent class for student management
 
         do {
             // Display the main menu
